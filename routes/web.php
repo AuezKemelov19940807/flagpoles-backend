@@ -3,5 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin');
 });
+
+
+require __DIR__.'/admin/admin.php';
