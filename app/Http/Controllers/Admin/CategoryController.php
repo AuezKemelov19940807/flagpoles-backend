@@ -12,9 +12,11 @@ use Illuminate\Http\RedirectResponse;
 
 
 class CategoryController extends Controller {
+
+
     public function index() {
-        $categories  = Category::all();
-        return response()->json($categories);
+
+        return view('admin.category.index', ['category' => Category::all()] );
     }
 
     public function create()
@@ -23,16 +25,22 @@ class CategoryController extends Controller {
     }
 
     public function store(Request $request) {
-
-        $validatedData = $request->validate([
-            'title' => 'required|unique:categories|max:255',
+        \Log::info($request->all());
+        $request->validate([
+            'title' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $name = $request->file('image')->getClientOriginalName();
 
-        $category = Category::create($validatedData);
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        // Сохранение информации о категории в БД (если нужно)
+        $category = new Category();
+        $category->title = $request->title;
+        $category->image = $imagePath;
+        $category->save();
 
         return redirect()->route('admin.category.index')->with('success', 'Category created successfully.');
-
     }
 
     public function show($category)

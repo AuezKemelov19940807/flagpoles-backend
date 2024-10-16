@@ -17,7 +17,23 @@
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 <div>
-    <h1>Create</h1>
+    <h1>Create Category</h1>
+    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="text" name="title" required>
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Create Post</button>
+    </form>
+
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
 </body>
 </html>

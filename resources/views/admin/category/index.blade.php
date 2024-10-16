@@ -17,7 +17,15 @@
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 <div>
-    <h1>Admin</h1>
+    <h1> Category </h1>
+    @foreach($category as $item)
+        {{ $item->title }}
+        @if($item->image)
+            <img src="{{ asset('storage/public/' . $item->image) }}" alt="{{ $item->title }}" />
+        @else
+            <p>No image available.</p>
+        @endif
+    @endforeach
 </div>
 </body>
 </html>
