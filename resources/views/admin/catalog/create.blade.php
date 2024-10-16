@@ -18,10 +18,12 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 <div>
     <h1>Create Category</h1>
-    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.catalog.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="title" required>
-        <input type="file" name="image" accept="image/*" required>
+        <label for="title">
+         <span>Название каталога: </span>   <input type="text" name="title" required>
+        </label>
+
         <button type="submit">Create Post</button>
     </form>
 
