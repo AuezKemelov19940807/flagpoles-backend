@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Catalog extends Model
 {
@@ -33,9 +34,10 @@ class Catalog extends Model
 
     }
 
-    public function categories()
+    public function categories(): HasMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->hasMany(Category::class);
+
     }
 
 }

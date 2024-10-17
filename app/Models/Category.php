@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends Model
 {
@@ -16,9 +17,8 @@ class Category extends Model
         'slug'
     ];
 
-    public function categories()
-    {
-        return $this->belongsToMany(Catalog::class); // или Catalog::class, если это ваша логика
-    }
+   public function catalog():BelongsTo {
+       return $this->belongsTo(Catalog::class, 'catalog_id');
+   }
 
 }
