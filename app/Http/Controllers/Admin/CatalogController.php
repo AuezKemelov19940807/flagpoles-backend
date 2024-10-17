@@ -27,9 +27,13 @@ class CatalogController extends Controller {
 
         $request->validate([
             'title' => 'required|string',
+            'subtitle' => 'required|string',
+            'description' => 'required|string',
         ]);
         $catalog = new Catalog();
         $catalog->title = $request->title;
+        $catalog->subtitle = $request->subtitle;
+        $catalog->description = $request->description;
 
         $catalog->save();
         return redirect()->route('admin.catalog.index')->with('success', 'catalog created successfully.');

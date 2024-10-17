@@ -23,7 +23,12 @@
         <label for="title">
          <span>Название каталога: </span>   <input type="text" name="title" required>
         </label>
-
+        <label for="subtitle">
+            <span>Подзаголовок: </span>   <input type="text" name="subtitle" required>
+        </label>
+        <label for="title">
+            <span>Описание: </span>   <input type="text" name="description" required>
+        </label>
         <button type="submit">Create Post</button>
     </form>
 

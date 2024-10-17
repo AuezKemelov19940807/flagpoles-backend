@@ -13,7 +13,9 @@ class Catalog extends Model
 
     protected $fillable = [
         'title',
-        'slug'
+        'slug',
+        'subtitle',
+        'description'
     ];
 
     protected static function boot() {
@@ -30,4 +32,10 @@ class Catalog extends Model
         });
 
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
 }
